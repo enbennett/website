@@ -81,6 +81,8 @@ img {
 
 .bio {
     grid-area: bio;
+    padding: 20px;
+    background-color: hsla(0deg, 0%, 0%, 0.2);
 }
 
 .resume {
