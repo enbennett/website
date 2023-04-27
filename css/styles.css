@@ -22,18 +22,21 @@ html,body {
     background-color: var(--table-light);
     color: white;
     padding: 50px;
+    padding-left: 150px;
+    padding-right: 150px;
+    display: grid;
+    gap: 20px;
     grid-template-areas: 
     'nav record-space panel'
     'nav record-space panel'
     'nav record-space panel'
     'nav record-space panel'
     'nav record-space panel';
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: 100px 1fr 100px;
 }
 
 .nav-menu {
     grid-area: nav;
+    max-width: 200px;
 }
 
 .nav-menu ul{
@@ -64,9 +67,34 @@ html,body {
     background-image: url("../img/wood-pattern.png");
     background-color: var(--table-light);
     padding: 50px;
+    display: grid;
+    gap: 20px;
+    grid-template-areas: 'pictures bio';
+
 }
 
 img {
-    max-width: 30%;
+    max-width: 60%;
     height: auto;
+    grid-area: pictures;
+}
+
+.bio {
+    grid-area: bio;
+}
+
+.resume {
+    background-color: var(--record-label);
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    color: var(--dark);
+    font-size: 19px;
+    box-shadow: var(--panel-shadow);
+}
+
+.resume:hover {
+    background-color: var(--teal);
+    color: var(--record-label);
 }
