@@ -1,0 +1,28 @@
+:root {
+    --teal: hsl(359deg 10% 15%);
+    --record-black: hsl(197deg 100% 8%);
+    --record-teal: hsl(191deg 100% 14%);
+    --label: hsl(21deg 50% 55%);
+    --table-dark: hsl(14deg 86% 25%);
+    --table-light: hsl(21deg 50% 55%);
+    --table-xlight: hsl(23deg 100% 72%);
+    --panel: hsl(14deg 86% 25%);
+    --panel-shadow: hsl(14deg 86% 25%);
+    --dark: hsl(14deg 86% 25%);
+
+}
+html {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+section {
+    background-image: url("../img/wood-pattern.png");
+    background-color: var(--table-light); 
+}
+
+img {
+    max-width: 30%;
+    max-height: auto;
+}
