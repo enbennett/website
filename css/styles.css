@@ -1,43 +1,72 @@
 :root {
-    --teal: hsl(359deg 10% 15%);
+    --teal: hsl(181deg 100% 31%);
     --record-black: hsl(197deg 100% 8%);
     --record-teal: hsl(191deg 100% 14%);
-    --label: hsl(21deg 50% 55%);
+    --record-label: hsl(180deg 74% 56%);
     --table-dark: hsl(14deg 86% 25%);
     --table-light: hsl(21deg 50% 55%);
-    --table-xlight: hsl(23deg 100% 72%);
     --panel: hsl(38deg 9% 77%);
-    --panel-shadow: hsl(38deg 9% 77%);
-    --dark: hsl(38deg 9% 77%);
+    --panel-shadow: hsl(180deg 74% 56%);
+    --dark: hsl(359deg 10% 15%);
 
 }
-html {
+html,body {
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .record-player{
     background-color: var(--table-light);
     color: white;
     padding: 50px;
+    grid-template-areas: 
+    'nav record-space panel'
+    'nav record-space panel'
+    'nav record-space panel'
+    'nav record-space panel'
+    'nav record-space panel';
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 100px 1fr 100px;
+}
+
+.nav-menu {
+    grid-area: nav;
 }
 
 .nav-menu ul{
     display: grid;
-    gap: 20px;
+    gap: 0;
     padding: 0;
     list-style: none;
-    grid-template-rows: repeat(5, 1fr);
+}
+
+.nav-menu a{
+    background-color: var(--panel);
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    text-align: left;
+    color: var(--dark);
+    font-size: 19px;
+    text-transform: uppercase;
+    box-shadow: var(--panel-shadow);
+}
+
+.nav-menu a:hover{
+    background-color: var(--dark);
+    color: var(--panel);
 }
 
 .bottom-area{
     background-image: url("../img/wood-pattern.png");
-    background-color: var(--table-light); 
-    gri
+    background-color: var(--table-light);
+    padding: 50px;
 }
 
 img {
     max-width: 30%;
-    max-height: auto;
+    height: auto;
 }
