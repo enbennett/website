@@ -6,9 +6,9 @@
     --table-dark: hsl(14deg 86% 25%);
     --table-light: hsl(21deg 50% 55%);
     --table-xlight: hsl(23deg 100% 72%);
-    --panel: hsl(14deg 86% 25%);
-    --panel-shadow: hsl(14deg 86% 25%);
-    --dark: hsl(14deg 86% 25%);
+    --panel: hsl(38deg 9% 77%);
+    --panel-shadow: hsl(38deg 9% 77%);
+    --dark: hsl(38deg 9% 77%);
 
 }
 html {
@@ -17,9 +17,24 @@ html {
     color: white;
 }
 
-section {
+.record-player{
+    background-color: var(--table-light);
+    color: white;
+    padding: 50px;
+}
+
+.nav-menu ul{
+    display: grid;
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.bottom-area{
     background-image: url("../img/wood-pattern.png");
     background-color: var(--table-light); 
+    gri
 }
 
 img {
