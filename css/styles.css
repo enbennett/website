@@ -6,7 +6,7 @@
     --table-dark: hsl(14deg 86% 25%);
     --table-light: hsl(21deg 50% 55%);
     --panel: hsl(38deg 9% 77%);
-    --panel-shadow: hsl(180deg 74% 56%);
+    --panel-shadow: hsl(162deg 3% 45%);
     --dark: hsl(359deg 10% 15%);
 
 }
@@ -19,11 +19,14 @@ html,body {
 }
 
 .record-player{
-    background-color: var(--table-light);
+    background-color: hsl(9deg 12% 21%);
+    background-image: url(../img/table.PNG);
+    background-repeat: no-repeat;
+    background-position: center;
     color: white;
     padding: 50px;
     padding-left: 150px;
-    padding-right: 150px;
+    padding-right: 150px; 
     display: grid;
     gap: 20px;
     grid-template-areas: 
@@ -32,6 +35,11 @@ html,body {
     'nav record-space panel'
     'nav record-space panel'
     'nav record-space panel';
+}
+
+
+.disk, .arm{
+    grid-area: record-space;
 }
 
 .nav-menu {
@@ -63,6 +71,19 @@ html,body {
     color: var(--panel);
 }
 
+.disk{
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
 .bottom-area{
     background-image: url("../img/wood-pattern.png");
     background-color: var(--table-light);
@@ -73,7 +94,7 @@ html,body {
 
 }
 
-img {
+.selfie{
     max-width: 60%;
     height: auto;
     grid-area: pictures;
