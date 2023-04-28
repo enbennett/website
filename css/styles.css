@@ -19,14 +19,15 @@ html,body {
 }
 
 .record-player{
-    background-color: hsl(9deg 12% 21%);
+    background-color: var(--dark);
     background-image: url(../img/table.PNG);
     background-repeat: no-repeat;
     background-position: center;
     color: white;
-    padding: 50px;
+    /*padding: 50px;
     padding-left: 150px;
-    padding-right: 150px; 
+    padding-right: 150px; */
+    padding: 20px;
     display: grid;
     gap: 20px;
     grid-template-areas: 
@@ -38,9 +39,26 @@ html,body {
 }
 
 
-.disk, .arm{
+.record, .arm{
     grid-area: record-space;
 }
+.record{
+    position: relative;
+    animation: rotation 2s infinite linear;
+}
+
+.arm{
+    position: relative;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
 
 .nav-menu {
     grid-area: nav;
@@ -71,18 +89,6 @@ html,body {
     color: var(--panel);
 }
 
-.disk{
-    animation: rotation 2s infinite linear;
-}
-
-@keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
-  }
 
 .bottom-area{
     background-image: url("../img/wood-pattern.png");
@@ -118,6 +124,6 @@ html,body {
 }
 
 .resume:hover {
-    background-color: var(--teal);
+    background-color: var(--record-teal);
     color: var(--record-label);
 }
