@@ -1,16 +1,16 @@
 :root {
-    --teal: hsl(181deg 100% 31%);
-    --record-black: hsl(197deg 100% 8%);
-    --record-teal: hsl(191deg 100% 14%);
-    --record-label: hsl(180deg 74% 56%);
-    --table-dark: hsl(14deg 86% 25%);
-    --table-light: hsl(21deg 50% 55%);
-    --panel: hsl(38deg 9% 77%);
-    --panel-shadow: hsl(162deg 3% 45%);
-    --dark: hsl(359deg 10% 15%);
+    --color-teal: hsl(181deg, 100%, 31%);
+    --color-record-black: hsl(197deg, 100%, 8%);
+    --color-record-teal: hsl(191deg, 100%, 14%);
+    --color-record-label: hsl(180deg, 74%, 56%);
+    --color-table-dark: hsl(14deg, 86%, 25%);
+    --color-table-light: hsl(21deg, 50%, 55%);
+    --color-panel: hsl(38deg, 9%, 77%);
+    --color-panel-shadow: hsl(162deg, 3%, 45%);
+    --color-dark: hsl(359deg, 10%, 15%);
 }
 
-html,body {
+html, body {
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
@@ -18,87 +18,96 @@ html,body {
     padding: 0;
 }
 
-.record-player{
-    background-color: var(--dark);
+.record-player {
+    background-color: var(--color-dark);
     background-image: url(../img/table.PNG);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: auto 100%;
     color: white;
-    padding: 20px;
     display: grid;
     gap: 20px;
     grid-template-areas: 
-    'nav record-space panel'
-    'nav record-space panel'
-    'nav record-space panel'
-    'nav record-space panel'
-    'nav record-space panel';
+        'nav record-space panel'
+        'nav record-space panel'
+        'nav record-space panel'
+        'nav record-space panel'
+        'nav record-space panel';
+    max-width: 100%;
+    max-height: 75%;
+    margin: auto;
+    box-sizing: border-box;
 }
 
-
-.record, .arm{
+.record,
+.arm {
     grid-area: record-space;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
 }
-.record{
+
+.record {
     position: relative;
     animation: rotation 2s infinite linear;
 }
 
-.arm{
+.arm {
     position: relative;
 }
 
 @keyframes rotation {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     to {
-      transform: rotate(359deg);
+        transform: rotate(359deg);
     }
-  }
+}
 
 .nav-menu {
     grid-area: nav;
-    max-width: 200px;
+    position: sticky;
+    top: 0;
 }
 
-.nav-menu ul{
+.nav-menu ul {
     display: grid;
     gap: 0;
     padding: 0;
     list-style: none;
 }
 
-.nav-menu a{
-    background-color: var(--panel);
+.nav-menu a {
+    background-color: var(--color-panel);
     display: block;
     text-decoration: none;
     padding: 10px;
     text-align: left;
-    color: var(--dark);
+    color: var(--color-dark);
     font-size: 19px;
     text-transform: uppercase;
-    box-shadow: var(--panel-shadow);
+    box-shadow: var(--color-panel-shadow);
 }
 
-.nav-menu a:hover{
-    background-color: var(--dark);
-    color: var(--panel);
+.nav-menu a:hover {
+    background-color: var(--color-dark);
+    color: var(--color-panel);
 }
 
-
-.bottom-area{
+.bottom-area {
     background-image: url("../img/wood-pattern.png");
-    background-color: var(--table-light);
+    background-color: var(--color-table-light);
     padding: 50px;
     display: grid;
     gap: 20px;
-    grid-template-areas: 'pictures bio';
-
+    grid-template-areas: 
+        'pictures'
+        'bio';
 }
 
-.selfie{
-    max-width: 60%;
+.selfie {
+    max-width: 100%;
     height: auto;
     grid-area: pictures;
 }
@@ -106,21 +115,47 @@ html,body {
 .bio {
     grid-area: bio;
     padding: 20px;
-    background-color: hsla(0deg, 0%, 0%, 0.2);
+    background-color: hsla(0, 0%, 0%, 0.2);
 }
 
 .resume {
-    background-color: var(--record-label);
+    background-color: var(--color-record-label);
     display: block;
     text-decoration: none;
     padding: 10px;
     text-align: center;
-    color: var(--dark);
+    color: var(--color-dark);
     font-size: 19px;
-    box-shadow: var(--panel-shadow);
+    box-shadow: var(--color-panel-shadow);
 }
 
 .resume:hover {
-    background-color: var(--record-teal);
-    color: var(--record-label);
+    background-color: var(--color-record-teal);
+    color: var(--color-record-label);
+}
+
+@media (max-width: 700px) {
+    .bottom-area {
+        grid-template-areas: 
+            'pictures'
+            'bio';
+    }
+}
+
+@media (min-width: 701px) {
+    .bottom-area {
+        grid-template-areas: 'pictures bio';
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .nav-menu a {
+        font-size: 14px; /* Adjust for medium screens */
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .nav-menu a {
+        font-size: 8px; /* Adjust for smaller screens */
+    }
 }
