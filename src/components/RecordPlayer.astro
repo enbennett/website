@@ -1,0 +1,134 @@
+---
+// The platter, spinning vinyl, and chrome tonearm only.
+// Sits on the wood deck (rendered in the page), so no cabinet here.
+---
+
+<svg
+  class="record-player"
+  viewBox="0 0 500 460"
+  role="img"
+  aria-labelledby="rp-title rp-desc"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title id="rp-title">A spinning record</title>
+  <desc id="rp-desc">A vinyl record turning on a felt mat, with a glowing label and a chrome tonearm resting on it.</desc>
+
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f5f7" />
+      <stop offset="0.42" stop-color="#cfd2d6" />
+      <stop offset="0.5" stop-color="#94979c" />
+      <stop offset="0.58" stop-color="#cfd2d6" />
+      <stop offset="1" stop-color="#7c7f84" />
+    </linearGradient>
+    <radialGradient id="chromeHub" cx="0.42" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#fdfdfe" />
+      <stop offset="0.55" stop-color="#c2c5c9" />
+      <stop offset="1" stop-color="#74777c" />
+    </radialGradient>
+    <radialGradient id="felt" cx="0.5" cy="0.42" r="0.62">
+      <stop offset="0" stop-color="#33210f" />
+      <stop offset="1" stop-color="#1d120a" />
+    </radialGradient>
+    <!-- glare streak that sweeps across the spinning record -->
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="0.45" stop-color="#cffbff" stop-opacity="0.26" />
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0.4" />
+      <stop offset="0.65" stop-color="#cffbff" stop-opacity="0.26" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <clipPath id="recordClip">
+      <circle cx="210" cy="230" r="188" />
+    </clipPath>
+  </defs>
+
+  <!-- recessed felt mat (stationary) -->
+  <circle cx="210" cy="230" r="208" fill="#160d06" />
+  <circle cx="210" cy="230" r="202" fill="url(#felt)" stroke="#3a2519" stroke-width="1.5" />
+  <circle cx="210" cy="230" r="196" fill="none" stroke="#0f0905" stroke-width="1" opacity="0.6" />
+  <circle cx="210" cy="230" r="190" fill="none" stroke="#43301d" stroke-width="0.75" opacity="0.5" />
+  <!-- stroboscope dots around the rim -->
+  <circle cx="210" cy="230" r="197" fill="none" stroke="#caa23e" stroke-width="4" stroke-dasharray="1.5 7" opacity="0.7" />
+
+  <!-- spinning vinyl -->
+  <g class="vinyl">
+    <circle cx="210" cy="230" r="188" fill="#141019" />
+    <circle cx="210" cy="230" r="170" fill="none" stroke="#2b2333" stroke-width="0.9" />
+    <circle cx="210" cy="230" r="156" fill="none" stroke="#d8a93a" stroke-width="1.1" opacity="0.22" />
+    <circle cx="210" cy="230" r="142" fill="none" stroke="#2b2333" stroke-width="0.9" />
+    <circle cx="210" cy="230" r="126" fill="none" stroke="#2b2333" stroke-width="0.9" />
+    <circle cx="210" cy="230" r="110" fill="none" stroke="#d8a93a" stroke-width="1.1" opacity="0.22" />
+    <circle cx="210" cy="230" r="94" fill="none" stroke="#2b2333" stroke-width="0.9" />
+    <circle cx="210" cy="230" r="80" fill="none" stroke="#2b2333" stroke-width="0.9" />
+    <!-- glare: bright streaks across the disc; rotate with the vinyl -->
+    <g clip-path="url(#recordClip)">
+      <rect x="22" y="150" width="376" height="64" fill="url(#sheen)" transform="rotate(-28 210 230)" />
+      <rect x="22" y="256" width="376" height="36" fill="url(#sheen)" opacity="0.5" transform="rotate(-28 210 230)" />
+    </g>
+    <!-- label (no text) -->
+    <circle cx="210" cy="230" r="66" fill="none" stroke="#efc659" stroke-width="2.5" opacity="0.85" />
+    <circle cx="210" cy="230" r="60" fill="#d8a93a" />
+    <circle cx="210" cy="230" r="48" fill="none" stroke="#9c7415" stroke-width="1.5" />
+    <circle cx="210" cy="230" r="5" fill="#d9d2c4" />
+  </g>
+
+  <!-- tonearm -->
+  <g class="tonearm">
+    <line x1="458" y1="92" x2="298" y2="150" stroke="url(#chrome)" stroke-width="9" stroke-linecap="round" />
+    <rect x="466" y="74" width="34" height="20" rx="6" fill="url(#chrome)" transform="rotate(-18 483 84)" />
+    <circle cx="458" cy="92" r="18" fill="#241710" stroke="#a9714b" stroke-width="0.75" />
+    <circle cx="458" cy="92" r="12" fill="url(#chromeHub)" />
+    <circle cx="295" cy="152" r="9" fill="url(#chromeHub)" />
+    <line x1="295" y1="160" x2="285" y2="178" stroke="url(#chrome)" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+
+  <!-- extra controls clustered by the tonearm -->
+  <g class="controls-extra">
+    <!-- anti-skate dial -->
+    <circle cx="486" cy="128" r="13" fill="#241710" stroke="#a9714b" stroke-width="0.75" />
+    <circle cx="486" cy="128" r="8.5" fill="url(#chromeHub)" />
+    <line x1="486" y1="128" x2="486" y2="121" stroke="#4a4d52" stroke-width="2" stroke-linecap="round" />
+    <!-- cue lever -->
+    <rect x="430" y="118" width="9" height="26" rx="4" fill="url(#chrome)" />
+    <circle cx="434.5" cy="118" r="5" fill="url(#chromeHub)" />
+    <!-- tonearm rest post + clip -->
+    <line x1="430" y1="186" x2="430" y2="206" stroke="url(#chrome)" stroke-width="6" stroke-linecap="round" />
+    <circle cx="430" cy="186" r="6" fill="url(#chromeHub)" />
+  </g>
+</svg>
+
+<style>
+  .record-player {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* cue the tonearm up-and-over when you hover the record */
+  .tonearm {
+    transform-box: view-box;
+    transform-origin: 458px 92px;
+    transition: transform 0.5s ease;
+  }
+  .record-player:hover .tonearm {
+    transform: rotate(-7deg);
+  }
+
+  /* rotate around the true platter center (210,230) in viewBox units,
+     so the glare's bounding box can't shift the pivot off-center */
+  .vinyl {
+    transform-box: view-box;
+    transform-origin: 210px 230px;
+    animation: rp-spin 4s linear infinite;
+  }
+
+  @keyframes rp-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

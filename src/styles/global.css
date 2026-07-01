@@ -1,0 +1,153 @@
+/* ============================================================
+   Design system
+   Shared layer: typography, spacing, radius — unifies every page.
+   Color is per-page, set via [data-theme] (see PALETTES.md).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&family=Lora:wght@400;500;600;700&display=swap');
+
+:root {
+  /* --- shared typography --- */
+  --font-display: 'Yeseva One', Georgia, 'Times New Roman', serif;
+  --font-body: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, monospace;
+
+  /* --- shared spacing scale --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+
+  /* --- shared radius --- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --maxw: 1100px;
+}
+
+/* ============================================================
+   Per-page palettes — each sets the same role variables.
+   Default (no attribute) = Home.
+   ============================================================ */
+
+:root,
+[data-theme='home'] {
+  --bg: #ab9d83; /* warm taupe rug, like the reference photo */
+  --surface: #6e4527; /* walnut */
+  --surface-light: #b07b4e;
+  --accent: #d8a93a; /* mustard gold */
+  --accent-bright: #efc659;
+  --metal: #dcd6c8;
+  --ink: #f4ecdd;
+  --ink-dim: #c8b8a4;
+  --glow: #e8893f; /* warm amber underglow */
+  --paper: #efe6d2; /* liner-notes paper */
+  --ink-dark: #3a2a1c; /* dark text on paper */
+}
+
+[data-theme='tarot'] {
+  --bg: #190f2b;
+  --surface: #3a2152;
+  --surface-light: #5b2a6e;
+  --accent: #d4af37;
+  --accent-bright: #f2a03d;
+  --metal: #9e2b3a;
+  --ink: #f3e9d2;
+  --ink-dim: #c9b59a;
+}
+
+[data-theme='friends'] {
+  --bg: #3c4733;
+  --surface: #5e7048;
+  --surface-light: #a7c47f;
+  --accent: #c36d43;
+  --accent-bright: #e8a24c;
+  --metal: #7a553a;
+  --ink: #f1ecde;
+  --ink-dim: #cdc3ab;
+}
+
+[data-theme='art'] {
+  --bg: #cfc1a8;
+  --surface: #b0a084;
+  --surface-light: #ddd2bb;
+  --accent: #b8893e;
+  --accent-bright: #c24a3a;
+  --metal: #3f7a5a;
+  --ink: #2e2620;
+  --ink-dim: #6b5d4e;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400; /* Yeseva One ships a single (display) weight */
+  line-height: 1.12;
+  margin: 0 0 var(--space-3);
+}
+
+a {
+  color: var(--accent-bright);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* visually hidden but available to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
