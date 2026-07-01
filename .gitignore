@@ -11,3 +11,7 @@ node_modules/
 .DS_Store
 # logs
 npm-debug.log*
+# local-only files (kept on disk, not in the repo)
+.claude/
+REDESIGN_PLAN.md
+PALETTES.md
