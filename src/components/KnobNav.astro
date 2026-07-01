@@ -15,10 +15,12 @@ const items = [
   { id: 'friends', label: 'Friends', path: 'friends' },
   { id: 'art', label: 'Art', path: 'art' },
 ];
+
 ---
 
 <nav class:list={['knob-nav', `labels-${labels}`]} aria-label="Main">
-  <ul>
+  <!-- Desktop: chrome control knobs -->
+  <ul class="knob-list">
     {
       items.map((item) => (
         <li>
@@ -36,10 +38,29 @@ const items = [
       ))
     }
   </ul>
+
+  <!-- Mobile: a chrome knob labeled "Menu" that opens a dropdown (under 760px) -->
+  <details class="nav-dd">
+    <summary>
+      <span class="dd-knob" aria-hidden="true"><span class="dd-knob-pointer" /></span>
+      <span class="dd-current">Menu</span>
+    </summary>
+    <ul class="dd-list">
+      {
+        items.map((item) => (
+          <li>
+            <a href={link(item.path)} aria-current={active === item.id ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
 </nav>
 
 <style>
-  .knob-nav ul {
+  .knob-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -153,7 +174,7 @@ const items = [
   }
 
   /* labels-left: text pinned to the far left, knob hugs the record side */
-  .labels-left ul {
+  .labels-left .knob-list {
     width: 100%;
   }
 
@@ -165,5 +186,110 @@ const items = [
 
   .labels-left .knob-label {
     text-align: left;
+  }
+
+  /* ---- mobile dropdown (hidden on desktop) ---- */
+  .nav-dd {
+    display: none;
+    position: relative;
+  }
+
+  .nav-dd summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .nav-dd summary::-webkit-details-marker { display: none; }
+  .nav-dd summary::marker { content: ''; }
+
+  /* chrome knob trigger — matches the desktop control knobs */
+  .dd-knob {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    background:
+      radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 42%),
+      conic-gradient(
+        from 215deg,
+        #f4f5f7 0deg, #8b8e93 60deg, #e7e8ea 120deg, #6f7277 180deg,
+        #dfe1e4 240deg, #82858a 300deg, #f4f5f7 360deg
+      );
+    box-shadow:
+      inset 0 0 0 3px rgba(0, 0, 0, 0.28),
+      inset 0 2px 3px rgba(255, 255, 255, 0.5),
+      0 3px 7px rgba(0, 0, 0, 0.45);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .dd-knob::after {
+    content: '';
+    position: absolute;
+    inset: 33%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, #fdfdfe, #9a9da2 70%, #6f7277);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+  .dd-knob-pointer {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    width: 3px;
+    height: 10px;
+    border-radius: 2px;
+    background: #4a4d52;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: background 0.3s ease;
+  }
+  /* turn + light up gold when the menu is open */
+  .nav-dd[open] .dd-knob {
+    transform: rotate(160deg);
+    box-shadow:
+      inset 0 0 0 3px rgba(0, 0, 0, 0.28),
+      0 0 0 3px var(--accent),
+      0 3px 9px rgba(0, 0, 0, 0.5);
+  }
+  .nav-dd[open] .dd-knob-pointer { background: var(--accent-bright); }
+
+  .dd-list {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 40;
+    min-width: 172px;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: var(--surface);
+    border: 1px solid rgba(0, 0, 0, 0.45);
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+  }
+  .dd-list li { margin: 0; }
+  .dd-list a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .dd-list a:hover { background: rgba(255, 255, 255, 0.1); }
+  .dd-list a[aria-current='page'] {
+    color: var(--accent-bright);
+    background: rgba(0, 0, 0, 0.18);
+  }
+
+  @media (max-width: 760px) {
+    .knob-list { display: none; }
+    .nav-dd { display: inline-block; }
   }
 </style>

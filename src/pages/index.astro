@@ -866,17 +866,17 @@ const playlists: string[] = [
 
   /* ---------- responsive ---------- */
   @media (max-width: 760px) {
+    /* keep the turntable horizontal across the top, just smaller */
     .deck {
-      grid-template-columns: 1fr;
-      justify-items: center;
+      grid-template-columns: auto 1fr auto;
+      gap: clamp(0.4rem, 2vw, 0.9rem);
+      padding: clamp(0.7rem, 2.5vw, 1.1rem) clamp(0.55rem, 2.5vw, 1rem);
     }
     .deck-controls {
-      width: 100%;
+      justify-content: flex-start;
     }
-    .deck-controls :global(.knob-nav) {
-      width: 100%;
-      max-width: 280px;
-      margin-inline: auto;
+    .deck-platter :global(.record-player) {
+      height: clamp(150px, 40vw, 235px);
     }
     .sideb-grid {
       grid-template-columns: 1fr;
@@ -889,6 +889,11 @@ const playlists: string[] = [
     .cover {
       width: 100%;
       max-width: 260px;
+    }
+    /* keep the B-side list left-justified even though the column is centered */
+    .tracklist {
+      justify-self: stretch;
+      text-align: left;
     }
   }
 </style>
